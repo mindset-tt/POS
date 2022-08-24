@@ -74,7 +74,7 @@ def update_province():
 def delete_province(prov_id):
     try:
         conn = config.conp
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute(
             "DELETE FROM province WHERE prov_ID =%s", (prov_id,))
         conn.commit()

@@ -77,7 +77,7 @@ def update_department():
 def delete_department(dep_id):
     try:
         conn = config.conp
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute(
             "DELETE FROM department WHERE dep_ID =%s", (dep_id,))
         conn.commit()

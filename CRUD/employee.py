@@ -103,7 +103,7 @@ def update_emp():
 def delete_emp(id):
     try:
         conn = config.conp
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute("DELETE FROM test.employee WHERE id =%s", (id,))
         conn.commit()
         respone = jsonify('Employee deleted successfully!')

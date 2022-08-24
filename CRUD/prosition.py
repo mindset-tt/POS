@@ -75,7 +75,7 @@ def update_position():
 def delete_position(pos_id):
     try:
         conn = config.conp
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute("DELETE FROM test.position WHERE pos_ID =%s", (pos_id,))
         conn.commit()
         respone = jsonify('Position deleted successfully!')

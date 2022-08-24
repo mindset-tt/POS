@@ -87,7 +87,7 @@ def update_user():
 def delete_user(user_id):
     try:
         conn = config.conp
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute("DELETE FROM test.useraccount WHERE username =%s", (user_id,))
         conn.commit()
         respone = jsonify('User deleted successfully!')
